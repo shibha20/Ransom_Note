@@ -1,0 +1,28 @@
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        """
+        :type ransomNote: str
+        :type magazine: str
+        :rtype: bool
+        """
+        ransomNote_map = {}
+        magazine_map = {}
+        for i in ransomNote:
+            if i in ransomNote_map:
+                ransomNote_map[i] += 1
+            else:
+                ransomNote_map[i] = 1 
+
+        for i in magazine:
+            if i in magazine_map:
+                magazine_map[i] += 1
+            else:
+                magazine_map[i] = 1 
+
+        print(magazine_map)
+        for i in ransomNote_map:
+            if (ransomNote_map[i] <= magazine_map.get(i,0)):
+                continue
+            else:
+                return False
+        return True
